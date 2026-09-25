@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenn — Beauty health studio для мужчин</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --fg:#f5f5f5; --fg-soft:#9a9a9a; --fg-line:#f5f5f533;
+  --accent:#2f6fed; --accent-on:#ffffff;
+  --panel-bg:#141414; --panel-fg:#f5f5f5;
+  --page-bg:#f4f2ee; --ink:#1a1a1a; --ink-soft:#5c5850; --line:#00000018;
+  --font-display:'Bebas Neue',sans-serif; --font-body:Barlow,sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --page-bg:#171614; --ink:#f2efe9; --ink-soft:#b8b3a8; --line:#ffffff22; color-scheme: dark; }
+}
+*{box-sizing:border-box}
+body{background:var(--page-bg); color:var(--ink); margin:0; font-family:var(--font-body);}
+
+.hero{ padding: 64px 20px 44px; background:var(--bg); color:var(--fg); }
+.hero-inner{ max-width:640px; margin:0 auto; }
+.eyebrow{ font:500 12px/1 var(--font-body); letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 14px; }
+.h1{ font-family:var(--font-display); font-weight:500; font-size:clamp(34px,9vw,56px); line-height:1.05; margin:0 0 16px; text-wrap:balance; color:var(--fg); }
+.lede{ font:400 17px/1.6 var(--font-body); color:var(--fg-soft); max-width:46ch; margin:0 0 28px; }
+.cta-row{ display:flex; flex-wrap:wrap; gap:10px; }
+.btn{ font:500 14px/1 var(--font-body); padding:14px 24px; border-radius:999px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; border:1px solid transparent; }
+.btn-primary{ background:var(--accent); color:var(--accent-on); }
+.btn-ghost{ background:transparent; color:var(--fg); border-color:var(--fg-line); }
+
+.stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1px; background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.stat{ background:var(--page-bg); padding:20px; }
+.stat b{ display:block; font:500 26px/1.1 var(--font-display); color:var(--ink); }
+.stat span{ font:400 12px/1.4 var(--font-body); color:var(--ink-soft); }
+
+.section{ max-width:640px; margin:0 auto; padding:44px 20px; }
+.section h2{ font-family:var(--font-display); font-weight:500; font-size:24px; margin:0 0 20px; color:var(--ink); text-wrap:balance; }
+.chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip{ font:500 13px/1 var(--font-body); padding:11px 18px; border-radius:999px; background:color-mix(in srgb, var(--accent) 16%, var(--page-bg)); color:var(--ink); }
+
+.about-box{ background:var(--panel-bg); color:var(--panel-fg); border-radius:14px; padding:28px 26px; font:400 16px/1.65 var(--font-body); }
+.about-box b{ font-weight:500; }
+
+.contact{ display:flex; flex-direction:column; gap:0; font:400 15px/1.6 var(--font-body); }
+.contact-row{ display:flex; justify-content:space-between; gap:12px; padding:16px 0; border-top:1px solid var(--line); flex-wrap:wrap; }
+.contact-row span:first-child{ color:var(--ink-soft); }
+.contact-row a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--ink-soft); }
+
+.foot{ padding:24px 20px 48px; text-align:center; }
+.foot a{ font:500 13px/1 var(--font-body); color:var(--ink-soft); text-decoration:none; border-bottom:1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Beauty health studio для мужчин</p>
+    <h1 class="h1">Zenn</h1>
+    <p class="lede">Сеть клиник №1 для мужчин: лазерная эпиляция, аппаратный массаж, косметология.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="tel:+998901772282">Позвонить +998 90 177 22 82</a>
+      <a class="btn btn-ghost" href="https://yandex.uz/maps/org/zenn_beauty/82402377645/" target="_blank" rel="noopener">На Яндекс.Картах</a>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><b>5,0</b><span>рейтинг на Яндекс.Картах</span></div>
+  <div class="stat"><b>27</b><span>отзывов</span></div>
+  <div class="stat"><b>9 516</b><span>подписчиков в Instagram</span></div>
+</div>
+
+<div class="section">
+  <h2>Услуги</h2>
+  <div class="chips">
+    <span class="chip">Лазерная эпиляция</span>
+    <span class="chip">Аппаратный массаж</span>
+    <span class="chip">Мужская косметология</span>
+  </div>
+</div>
+
+<div class="section">
+  <h2>О студии</h2>
+  <div class="about-box">Из шапки профиля: <b>«ZENN — сеть клиник №1 для мужчин», «более 8000 довольных клиентов», «оборудование, одобренное FDA»</b>.</div>
+</div>
+
+<div class="section">
+  <h2>Контакты</h2>
+  <div class="contact">
+    <div class="contact-row"><span>Адрес</span><span>Ташкент, ул. Садыка Азимова, 68, офис 501</span></div>
+    <div class="contact-row"><span>Телефон</span><a href="tel:+998901772282">+998 90 177 22 82</a></div>
+    <div class="contact-row"><span>Instagram</span><a href="https://www.instagram.com/zenn_beauty_uz" target="_blank" rel="noopener">@zenn_beauty_uz</a></div>
+  </div>
+</div>
+
+<div class="foot"><a href="https://yandex.uz/maps/org/zenn_beauty/82402377645/" target="_blank" rel="noopener">Карточка на Яндекс.Картах &rarr;</a></div>
+
+</body>
+</html>
