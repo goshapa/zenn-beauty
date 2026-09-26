@@ -22,7 +22,10 @@ svg{display:block}
 
 .icon-btn{ width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--accent); color:var(--accent-on); flex:0 0 auto; }
 .icon-btn svg{ width:18px; height:18px; }
-.icon-btn.ghost{ background:transparent; border:1.5px solid var(--accent); color:var(--fg); }
+
+.lang-switch{ display:flex; border:1.5px solid var(--accent); border-radius:999px; overflow:hidden; flex:0 0 auto; }
+.lang-switch button{ border:none; background:transparent; color:var(--fg-soft); font:600 11px/1 var(--font-body); padding:8px 10px; cursor:pointer; }
+.lang-switch button.active{ background:var(--accent); color:var(--accent-on); }
 
 .topbar{ position:sticky; top:0; z-index:30; display:flex; align-items:center; justify-content:space-between; padding:16px 20px; background:color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter:blur(6px); }
 .logo{ font-family:var(--font-display); font-size:20px; color:var(--fg); display:flex; align-items:center; gap:6px; letter-spacing:.02em; }
@@ -39,7 +42,7 @@ svg{display:block}
 .menu-links a{ font-family:var(--font-display); font-size:24px; color:var(--fg); }
 .menu-contact{ font:400 15px/1.9 var(--font-body); color:var(--fg-soft); margin-bottom:24px; }
 .menu-contact a{ color:var(--fg); }
-.menu-social{ display:flex; gap:10px; margin-bottom:28px; }
+.menu-social{ display:flex; align-items:center; gap:10px; margin-bottom:28px; flex-wrap:wrap; }
 .menu-cta{ display:inline-block; padding:16px 28px; border-radius:999px; border:1.5px solid var(--accent); color:var(--fg); font:500 14px/1 var(--font-body); }
 
 .hero{ max-width:1040px; margin:0 auto; padding:8px 20px 60px; display:grid; grid-template-columns:1fr 1fr; gap:8px 40px; align-items:center; }
@@ -133,12 +136,12 @@ svg{display:block}
 <div class="popup-overlay" id="popup">
   <div class="popup-card">
     <button class="popup-close" id="popupClose" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
-    <h3>Впервые у Zenn?</h3>
-    <p>Оставьте номер — мастер перезвонит и подберёт удобное время.</p>
+    <h3 data-i18n="popup_title"></h3>
+    <p data-i18n="popup_text"></p>
     <form id="popupForm">
-      <input class="field" type="tel" placeholder="Телефон" required>
-      <input class="field" type="text" placeholder="Имя" required>
-      <button class="submit-btn" type="submit">Заказать звонок</button>
+      <input class="field" type="tel" data-i18n-ph="popup_phone_ph" required>
+      <input class="field" type="text" data-i18n-ph="popup_name_ph" required>
+      <button class="submit-btn" type="submit" data-i18n="popup_submit"></button>
     </form>
   </div>
 </div>
@@ -150,26 +153,34 @@ svg{display:block}
       <button class="burger" id="menuClose" aria-label="Закрыть меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
     </div>
     <nav class="menu-links">
-      <a href="#top">Главная</a>
-      <a href="#services">Услуги</a>
-      <a href="#about">О нас</a>
-      <a href="#contact">Контакты</a>
+      <a href="#top" data-i18n="nav_home"></a>
+      <a href="#services" data-i18n="nav_services"></a>
+      <a href="#about" data-i18n="nav_about"></a>
+      <a href="#contact" data-i18n="nav_contact"></a>
     </nav>
     <div class="menu-contact">
       +998 90 177 22 82<br>
-      Ташкент, ул. Садыка Азимова, 68, офис 501
+      <span data-i18n="address_text"></span>
     </div>
     <div class="menu-social">
       <a class="icon-btn" href="https://www.instagram.com/zenn_beauty_uz" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg></a>
       <a class="icon-btn" href="tel:+998901772282" aria-label="Позвонить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2Z"/></svg></a>
+      <div class="lang-switch" data-lang-switch>
+        <button data-lang="ru">RU</button>
+        <button data-lang="uz">UZ</button>
+      </div>
     </div>
-    <a class="menu-cta" href="tel:+998901772282">Связаться со мной</a>
+    <a class="menu-cta" href="tel:+998901772282" data-i18n="menu_cta"></a>
   </div>
 </div>
 
 <div class="topbar" id="top">
   <span class="logo">Z<b>enn</b></span>
   <div class="topbar-right">
+    <div class="lang-switch" data-lang-switch>
+      <button data-lang="ru">RU</button>
+      <button data-lang="uz">UZ</button>
+    </div>
     <a class="icon-btn" href="https://www.instagram.com/zenn_beauty_uz" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg></a>
     <button class="burger" id="menuOpen" aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
@@ -177,67 +188,67 @@ svg{display:block}
 
 <div class="hero">
   <div>
-    <h1 class="h1">КЛИНИКА<br>ДЛЯ МУЖЧИН</h1>
+    <h1 class="h1" data-i18n="hero_words"></h1>
   </div>
   <div class="oval-wrap">
     <div class="oval-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.5" r="3.3"/></svg></div>
     <div class="brand-mark">
       <div class="b1">Zenn</div>
-      <div class="b2">в Ташкенте</div>
+      <div class="b2" data-i18n="in_tashkent"></div>
     </div>
   </div>
   <div>
-    <p class="tagline"><span class="drop">С</span>еть клиник №1 для мужчин: лазерная эпиляция, аппаратный массаж и косметология на оборудовании, одобренном FDA.</p>
+    <p class="tagline"><span class="drop">С</span><span data-i18n="lede_rest"></span></p>
     <div class="hero-ctas">
-      <a class="circle-cta" href="tel:+998901772282">Записаться</a>
-      <div class="badge-circle">№1 для мужчин в Ташкенте</div>
+      <a class="circle-cta" href="tel:+998901772282" data-i18n="hero_cta"></a>
+      <div class="badge-circle" data-i18n="badge"></div>
     </div>
     <div style="margin-top:22px">
-      <a class="ghost-pill" href="#contact">Связаться со мной</a>
+      <a class="ghost-pill" href="#contact" data-i18n="hero_ghost"></a>
     </div>
   </div>
 </div>
 
-<a class="float-btn left" href="https://www.instagram.com/zenn_beauty_uz" target="_blank" rel="noopener">Instagram</a>
-<a class="float-btn right" href="tel:+998901772282">Онлайн-запись</a>
+<a class="float-btn left" href="https://www.instagram.com/zenn_beauty_uz" target="_blank" rel="noopener" data-i18n="float_ig"></a>
+<a class="float-btn right" href="tel:+998901772282" data-i18n="float_book"></a>
 
 <div class="section" id="services">
   <div class="section-head">
-    <h2>Услуги</h2>
-    <p>Цены уточняйте при записи — стоимость зависит от объёма и сложности работы.</p>
+    <h2 data-i18n="services_title"></h2>
+    <p data-i18n="services_sub"></p>
   </div>
   <div class="svc-scroll">
     <div class="svc-card">
-      <h3>Лазерная эпиляция</h3>
-      <p class="d">В том числе мужское направление</p>
-      <p class="price">цена по запросу</p>
-      <a class="svc-book" href="tel:+998901772282">Записаться</a>
+      <h3 data-i18n="svc_1_title"></h3>
+      <p class="d" data-i18n="svc_1_desc"></p>
+      <p class="price" data-i18n="price_note"></p>
+      <a class="svc-book" href="tel:+998901772282" data-i18n="svc_book"></a>
     </div>
     <div class="svc-card">
-      <h3>Аппаратный массаж</h3>
-      <p class="d">Аппаратные методики</p>
-      <p class="price">цена по запросу</p>
-      <a class="svc-book" href="tel:+998901772282">Записаться</a>
+      <h3 data-i18n="svc_2_title"></h3>
+      <p class="d" data-i18n="svc_2_desc"></p>
+      <p class="price" data-i18n="price_note"></p>
+      <a class="svc-book" href="tel:+998901772282" data-i18n="svc_book"></a>
     </div>
     <div class="svc-card">
-      <h3>Мужская косметология</h3>
-      <p class="d">Уход за кожей лица и тела</p>
-      <p class="price">цена по запросу</p>
-      <a class="svc-book" href="tel:+998901772282">Записаться</a>
+      <h3 data-i18n="svc_3_title"></h3>
+      <p class="d" data-i18n="svc_3_desc"></p>
+      <p class="price" data-i18n="price_note"></p>
+      <a class="svc-book" href="tel:+998901772282" data-i18n="svc_book"></a>
     </div>
     <div class="svc-card">
-      <h3>INFRASLIM X</h3>
-      <p class="d">Коррекция фигуры</p>
-      <p class="price">цена по запросу</p>
-      <a class="svc-book" href="tel:+998901772282">Записаться</a>
+      <h3 data-i18n="svc_4_title"></h3>
+      <p class="d" data-i18n="svc_4_desc"></p>
+      <p class="price" data-i18n="price_note"></p>
+      <a class="svc-book" href="tel:+998901772282" data-i18n="svc_book"></a>
     </div>
   </div>
 </div>
 
 <div class="section">
   <div class="section-head">
-    <h2>Работы</h2>
-    <p>Слоты под фото — заполняются перед запуском.</p>
+    <h2 data-i18n="gallery_title"></h2>
+    <p data-i18n="gallery_sub"></p>
   </div>
   <div class="gallery">
     <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13.5" r="3.3"/></svg></div>
@@ -252,50 +263,50 @@ svg{display:block}
 <div class="section" id="about">
   <div class="inside">
     <div class="inside-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M23 7l-7 5 7 5V7Z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-    <div class="inside-script">Zenn изнутри</div>
+    <div class="inside-script" data-i18n="inside_label"></div>
   </div>
 </div>
 
 <div class="section">
   <div class="section-head">
-    <h2>Почему Zenn</h2>
+    <h2 data-i18n="values_title"></h2>
   </div>
   <div class="values">
     <div class="value">
       <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></div>
-      <h3>№1 для мужчин</h3>
-      <p>Позиционирование сети клиник в Instagram-профиле.</p>
+      <h3 data-i18n="val_1_title"></h3>
+      <p data-i18n="val_1_desc"></p>
     </div>
     <div class="value">
       <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5Z"/></svg></div>
-      <h3>8000+ клиентов</h3>
-      <p>Заявлено в шапке профиля студии.</p>
+      <h3 data-i18n="val_2_title"></h3>
+      <p data-i18n="val_2_desc"></p>
     </div>
     <div class="value">
       <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
-      <h3>Оборудование FDA</h3>
-      <p>Аппаратура, одобренная FDA, для эпиляции и косметологии.</p>
+      <h3 data-i18n="val_3_title"></h3>
+      <p data-i18n="val_3_desc"></p>
     </div>
   </div>
 </div>
 
 <div class="section" id="contact">
   <div class="section-head">
-    <h2>Контакты</h2>
+    <h2 data-i18n="contact_title"></h2>
   </div>
   <div class="contact-wrap">
     <div class="contact-list">
-      <div class="contact-row"><span>Адрес</span><span>Ташкент, ул. Садыка Азимова, 68, офис 501</span></div>
-      <div class="contact-row"><span>Телефон</span><a href="tel:+998901772282">+998 90 177 22 82</a></div>
-      <div class="contact-row"><span>Instagram</span><a href="https://www.instagram.com/zenn_beauty_uz" target="_blank" rel="noopener">@zenn_beauty_uz</a></div>
-      <div class="contact-row"><span>Яндекс.Карты</span><a href="https://yandex.uz/maps/org/zenn_beauty/82402377645/" target="_blank" rel="noopener">5,0 · 27 отзывов</a></div>
+      <div class="contact-row"><span data-i18n="contact_address"></span><span data-i18n="address_text"></span></div>
+      <div class="contact-row"><span data-i18n="contact_phone"></span><a href="tel:+998901772282">+998 90 177 22 82</a></div>
+      <div class="contact-row"><span data-i18n="contact_ig"></span><a href="https://www.instagram.com/zenn_beauty_uz" target="_blank" rel="noopener">@zenn_beauty_uz</a></div>
+      <div class="contact-row"><span data-i18n="contact_maps"></span><a href="https://yandex.uz/maps/org/zenn_beauty/82402377645/" target="_blank" rel="noopener">5,0 · 27 отзывов</a></div>
     </div>
     <div class="form-box">
-      <h3>Записаться</h3>
-      <form onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent='Спасибо, ждите звонка';">
-        <input class="field" type="tel" placeholder="Ваш телефон" required>
-        <input class="field" type="text" placeholder="Имя" required>
-        <button class="submit-btn" type="submit">Заказать звонок</button>
+      <h3 data-i18n="form_title"></h3>
+      <form id="contactForm">
+        <input class="field" type="tel" data-i18n-ph="form_phone_ph" required>
+        <input class="field" type="text" data-i18n-ph="form_name_ph" required>
+        <button class="submit-btn" type="submit" data-i18n="form_submit"></button>
       </form>
     </div>
   </div>
@@ -304,18 +315,44 @@ svg{display:block}
 <div class="foot">
   <span class="logo" style="justify-content:center">Z<b>enn</b></span>
   <div class="foot-links">
-    <a href="https://www.instagram.com/zenn_beauty_uz" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.instagram.com/zenn_beauty_uz" target="_blank" rel="noopener" data-i18n="contact_ig"></a>
     <a href="tel:+998901772282">+998 90 177 22 82</a>
-    <a href="https://yandex.uz/maps/org/zenn_beauty/82402377645/" target="_blank" rel="noopener">Яндекс.Карты</a>
+    <a href="https://yandex.uz/maps/org/zenn_beauty/82402377645/" target="_blank" rel="noopener" data-i18n="contact_maps"></a>
   </div>
-  <small>Макет по образцу kimmylab.uz, на данных Яндекс.Карт и Instagram студии Zenn. Фото добавляются перед публикацией.</small>
+  <small data-i18n="footer_note"></small>
 </div>
 
 <script>
+const I18N = {"ru": {"nav_home": "Главная", "nav_services": "Услуги", "nav_about": "О нас", "nav_contact": "Контакты", "menu_cta": "Связаться со мной", "popup_text": "Оставьте номер — мастер перезвонит и подберёт удобное время.", "popup_phone_ph": "Телефон", "popup_name_ph": "Имя", "popup_submit": "Заказать звонок", "popup_thanks_title": "Спасибо!", "popup_thanks_text": "Мы перезвоним в течение дня.", "hero_cta": "Записаться", "hero_ghost": "Связаться со мной", "float_ig": "Instagram", "float_phone": "Позвонить", "float_book": "Онлайн-запись", "services_title": "Услуги", "services_sub": "Цены уточняйте при записи — стоимость зависит от объёма и сложности работы.", "price_note": "цена по запросу", "svc_book": "Записаться", "gallery_title": "Работы", "gallery_sub": "Слоты под фото — заполняются перед запуском.", "team_title": "Мастера", "contact_title": "Контакты", "contact_address": "Адрес", "contact_phone": "Телефон", "contact_ig": "Instagram", "contact_maps": "Яндекс.Карты", "form_title": "Записаться", "form_phone_ph": "Ваш телефон", "form_name_ph": "Имя", "form_submit": "Заказать звонок", "form_thanks": "Спасибо, ждите звонка", "popup_title": "Впервые у Zenn?", "hero_words": "КЛИНИКА<br>ДЛЯ МУЖЧИН", "lede_rest": "еть клиник №1 для мужчин: лазерная эпиляция, аппаратный массаж и косметология на оборудовании, одобренном FDA.", "badge": "№1 для мужчин в Ташкенте", "in_tashkent": "в Ташкенте", "inside_label": "Zenn изнутри", "values_title": "Почему Zenn", "address_text": "Ташкент, ул. Садыка Азимова, 68, офис 501", "footer_note": "Макет по образцу kimmylab.uz, на данных Яндекс.Карт и Instagram студии Zenn. Фото добавляются перед публикацией.", "svc_1_title": "Лазерная эпиляция", "svc_1_desc": "В том числе мужское направление", "svc_2_title": "Аппаратный массаж", "svc_2_desc": "Аппаратные методики", "svc_3_title": "Мужская косметология", "svc_3_desc": "Уход за кожей лица и тела", "svc_4_title": "INFRASLIM X", "svc_4_desc": "Коррекция фигуры", "val_1_title": "№1 для мужчин", "val_1_desc": "Позиционирование сети клиник в Instagram-профиле.", "val_2_title": "8000+ клиентов", "val_2_desc": "Заявлено в шапке профиля студии.", "val_3_title": "Оборудование FDA", "val_3_desc": "Аппаратура, одобренная FDA, для эпиляции и косметологии."}, "uz": {"nav_home": "Bosh sahifa", "nav_services": "Xizmatlar", "nav_about": "Biz haqimizda", "nav_contact": "Kontaktlar", "menu_cta": "Men bilan bog'laning", "popup_text": "Raqamingizni qoldiring — usta qo'ng'iroq qilib, qulay vaqtni tanlaydi.", "popup_phone_ph": "Telefon", "popup_name_ph": "Ism", "popup_submit": "Qo'ng'iroqqa buyurtma berish", "popup_thanks_title": "Rahmat!", "popup_thanks_text": "Biz kun davomida qo'ng'iroq qilamiz.", "hero_cta": "Yozilish", "hero_ghost": "Men bilan bog'laning", "float_ig": "Instagram", "float_phone": "Qo'ng'iroq qilish", "float_book": "Onlayn yozilish", "services_title": "Xizmatlar", "services_sub": "Narxlarni yozilishda aniqlashtiring — narx ish hajmi va murakkabligiga bog'liq.", "price_note": "narxi so'rov bo'yicha", "svc_book": "Yozilish", "gallery_title": "Ishlar", "gallery_sub": "Foto uchun joylar — ishga tushirishdan oldin to'ldiriladi.", "team_title": "Ustalar", "contact_title": "Kontaktlar", "contact_address": "Manzil", "contact_phone": "Telefon", "contact_ig": "Instagram", "contact_maps": "Yandex Xaritalar", "form_title": "Yozilish", "form_phone_ph": "Telefoningiz", "form_name_ph": "Ism", "form_submit": "Qo'ng'iroqqa buyurtma berish", "form_thanks": "Rahmat, qo'ng'iroqni kuting", "popup_title": "Birinchi marta Zenndami?", "hero_words": "ERKAKLAR<br>UCHUN KLINIKA", "lede_rest": "Erkaklar uchun №1 klinikalar tarmog'i: lazer epilyatsiyasi, apparat massaji va FDA tasdiqlagan uskunalarda kosmetologiya.", "badge": "Toshkentda erkaklar uchun №1", "in_tashkent": "Toshkentda", "inside_label": "Zenn ichida", "values_title": "Nega aynan Zenn", "address_text": "Toshkent, Sodiq Azimov ko'chasi, 68-uy, 501-ofis", "footer_note": "Maket kimmylab.uz namunasi asosida, Zenn studiyasining Yandex Xaritalar va Instagram ma'lumotlari yordamida tayyorlangan. Fotolar ishga tushirishdan oldin qo'shiladi.", "svc_1_title": "Lazer epilyatsiyasi", "svc_1_desc": "Jumladan erkaklar yo'nalishi", "svc_2_title": "Apparat massaji", "svc_2_desc": "Apparat usullari", "svc_3_title": "Erkaklar kosmetologiyasi", "svc_3_desc": "Yuz va tana terisiga parvarish", "svc_4_title": "INFRASLIM X", "svc_4_desc": "Tana shaklini korreksiya qilish", "val_1_title": "Erkaklar uchun №1", "val_1_desc": "Klinikalar tarmog'ining Instagram profilidagi pozitsiyasi.", "val_2_title": "8000+ mijoz", "val_2_desc": "Studiya profilida e'lon qilingan.", "val_3_title": "FDA uskunasi", "val_3_desc": "Epilyatsiya va kosmetologiya uchun FDA tasdiqlagan uskunalar."}};
+const langKey = 'zenn_lang';
+let currentLang = 'ru';
+try{ currentLang = localStorage.getItem(langKey) || 'ru'; }catch(e){}
+
+function applyLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.dataset.i18n;
+    if(I18N[lang] && I18N[lang][key] !== undefined) el.innerHTML = I18N[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const key = el.dataset.i18nPh;
+    if(I18N[lang] && I18N[lang][key] !== undefined) el.placeholder = I18N[lang][key];
+  });
+  document.querySelectorAll('[data-lang-switch] button').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  try{ localStorage.setItem(langKey, lang); }catch(e){}
+}
+document.querySelectorAll('[data-lang-switch] button').forEach(btn=>{
+  btn.addEventListener('click', ()=> applyLang(btn.dataset.lang));
+});
+applyLang(currentLang);
+
 const menuPanel = document.getElementById('menuPanel');
 document.getElementById('menuOpen').addEventListener('click', ()=> menuPanel.classList.add('open'));
 document.getElementById('menuClose').addEventListener('click', ()=> menuPanel.classList.remove('open'));
-menuPanel.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> menuPanel.classList.remove('open')));
+menuPanel.querySelectorAll('.menu-links a').forEach(a=> a.addEventListener('click', ()=> menuPanel.classList.remove('open')));
 
 const popup = document.getElementById('popup');
 const popupKey = 'zenn_popup_seen';
@@ -324,9 +361,13 @@ document.getElementById('popupClose').addEventListener('click', closePopup);
 popup.addEventListener('click', e=>{ if(e.target===popup) closePopup(); });
 document.getElementById('popupForm').addEventListener('submit', e=>{
   e.preventDefault();
-  popup.querySelector('h3').textContent = 'Спасибо!';
-  popup.querySelector('p').textContent = 'Мы перезвоним в течение дня.';
+  popup.querySelector('h3').textContent = I18N[currentLang].popup_thanks_title;
+  popup.querySelector('p').textContent = I18N[currentLang].popup_thanks_text;
   popup.querySelector('form').hidden = true;
+});
+document.getElementById('contactForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  e.target.querySelector('.submit-btn').textContent = I18N[currentLang].form_thanks;
 });
 let seen = false;
 try{ seen = sessionStorage.getItem(popupKey) === '1'; }catch(e){}
